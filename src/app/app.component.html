@@ -1,0 +1,394 @@
+<app-header></app-header>
+<p>
+  <ngb-alert [dismissible]="false">
+    <strong>Warning!</strong> Better check yourself, you're not looking too good.
+  </ngb-alert>
+</p>
+
+<div class="container-fluid">
+
+</div>
+
+<p class="h2">{{title}}</p>
+<app-login></app-login>
+
+<button (click)="getName('Hello!')">Click Me!</button>
+
+<br />
+<br />
+
+<input placeholder="Keyup" #input1 (keyup)="getName(input1.value)" />
+<br />
+<br />
+
+<input placeholder="Keydown" #input2 (keydown)="getName(input2.value)" />
+<br />
+<br />
+
+<input placeholder="blur" #input3 (blur)="getName(input3.value)" />
+<br />
+<br />
+
+<input placeholder="input" #input4 (input)="getName(input4.value)" />
+<br />
+<br />
+
+<h1 #input5 (mouseover)="getName('Mouse Over!')">Mouse Over!</h1>
+<br />
+<br />
+
+<h1 #input6 (mouseleave)="getName('Mouse Leave')">Mouse leave!</h1>
+<br />
+<br />
+<br />
+<br />
+
+<input placeholder="Enter Your Name" #input7 (keyup)="getValue(input7.value)" />
+<br />
+<br />
+<h1>Your Name is: {{yourname}}</h1>
+<br />
+
+<br />
+<br />
+<br />
+<br />
+
+<input placeholder="Enter Your Name" #input8 /> &nbsp;
+<button (click)="getValue(input8.value)">Click</button>
+<br />
+<br />
+<h1>Your Name is: {{yourname}}</h1>
+<br />
+
+
+<div class="counter">
+
+  <div class="h2div"><h2>Counter</h2></div>
+  <div class="div1">
+    <button (click)="counter('Add')">++</button>
+    <p>{{count}}</p>
+    <button (click)="counter('Minus')">--</button>
+  </div>
+</div>
+
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+
+
+<!--Property Binding-->
+
+<div style="text-align:center;">
+  <input placeholder="input" value={{inputname}} disabled={{value}} (click)="onClick()" />
+
+  <br />
+  <br />
+
+  <input placeholder="input" [value]=inputname [disabled]=value (click)="onClick()" />
+</div>
+
+
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+
+<h1 *ngIf="show else elseBlock">Hello! <p>If condition is true.</p></h1>
+<br />
+<br />
+
+<ng-template #elseBlock>
+  <h1>Hello! <p>else condition is true.</p></h1>
+</ng-template>
+
+
+<br />
+<br />
+<br />
+<br />
+<br />
+
+<h1 *ngIf="show; then ifBlock1 else elseBlock1">Hello! <p>If condition is true.</p></h1>
+<br />
+<br />
+
+
+<ng-template #ifBlock1>
+  <h1>Hello! <p>If condition</p></h1>
+</ng-template>
+
+
+<ng-template #elseBlock1>
+  <h1>Hello! <p>else condition</p></h1>
+</ng-template>
+
+
+
+<!--Multiple condition or else if-->
+<ng-template [ngIf]="color==='Red'">
+  <h1 style="color:{{color}};">{{color}} color.</h1>
+</ng-template>
+
+<ng-template [ngIf]="color==='Green'">
+  <h1 style="color:{{color}};">{{color}} color.</h1>
+</ng-template>
+
+<ng-template [ngIf]="color==='Yellow'">
+  <h1 style="color:{{color}};">{{color}} color.</h1>
+</ng-template>
+
+
+
+<!--Switch Case-->
+<div [ngSwitch]="color">
+  <h1 *ngSwitchCase="'Red'" style="color:{{color}}">{{color}} color</h1>
+  <h1 *ngSwitchCase="'Green'" style="color:{{color}}">{{color}} color</h1>
+  <h1 *ngSwitchCase="'Blue'" style="color:{{color}}">{{color}} color</h1>
+  <h1 *ngSwitchCase="'Yellow'" style="color:{{color}}">{{color}} color</h1>
+  <h1 *ngSwitchCase="'Pink'" style="color:{{color}}">{{color}} color</h1>
+  <h1 *ngSwitchDefault>Unknown color</h1>
+</div>
+
+
+
+
+<!--For Loop-->
+
+<h3 *ngFor="let uname of users"> Name is: {{uname}} </h3>
+
+
+
+
+<h3 *ngFor="let data of usersDetails">
+  {{data.name}} -- {{data.email}} -- {{data.phone}}
+</h3>
+
+<!--Nested Loop-->
+<ul *ngFor="let userInfo of usersInfos">
+  <li>{{userInfo.name}}</li>
+  <li>{{userInfo.email}}</li>
+  <li>{{userInfo.phone}}</li>
+  <li>{{userInfo.socialAcounts}}</li>
+  <ul *ngFor="let infos of userInfo.socialAcounts">
+    <li>{{infos}}</li>
+  </ul>
+</ul>
+
+
+
+<br />
+<br />
+<br />
+<br />
+<br />
+<h1 [style.color]="dynamicColor">Dynamic Style.</h1>
+<br />
+<button (click)="changeColor()">Chane Color</button>
+
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+
+<h1>Angular Forms</h1>
+<br />
+<br />
+
+<form #basicForm="ngForm" (ngSubmit)="getData(basicForm.value)">
+  <input type="text" ngModel name="user" placeholder="Enter Your Name" />
+  <br />
+  <br />
+  <input type="text" ngModel name="email" placeholder="Enter Your Email" />
+  <br />
+  <br />
+  <input type="text" ngModel name="mobile" placeholder="Enter Your Mobile Number" />
+  <br />
+  <br />
+  <button>Submit</button>
+  <br />
+  <br />
+  <ul>
+    <li>{{userData.user}}</li>
+    <li>{{userData.email}}</li>
+    <li>{{userData.mobile}}</li>
+  </ul>
+
+</form>
+
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+
+<button (click)="toggle()">Toggle</button>
+
+<h1 *ngIf="display">Hello!</h1>
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<mat-slide-toggle>Toggle me!</mat-slide-toggle>
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<div class="example-label">Stroked</div>
+<div class="example-button-row">
+  <button mat-stroked-button>Basic</button>
+  <button mat-stroked-button color="primary">Primary</button>
+  <button mat-stroked-button color="accent">Accent</button>
+  <button mat-stroked-button color="warn">Warn</button>
+  <button mat-stroked-button disabled>Disabled</button>
+  <a mat-stroked-button href="https://www.google.com/" target="_blank">Link</a>
+</div>
+<br />
+<br />
+<br />
+<br />
+
+<div class="example-button-row">
+  <button mat-button>Basic</button>
+  <button mat-button color="primary">Primary</button>
+  <button mat-button color="accent">Accent</button>
+  <button mat-button color="warn">Warn</button>
+  <button mat-button disabled>Disabled</button>
+  <a mat-button href="https://www.google.com/" target="_blank">Link</a>
+</div>
+<br />
+<br />
+<br />
+<br />
+<div class="example-button-row">
+  <button mat-raised-button>Basic</button>
+  <button mat-raised-button color="primary">Primary</button>
+  <button mat-raised-button color="accent">Accent</button>
+  <button mat-raised-button color="warn">Warn</button>
+  <button mat-raised-button disabled>Disabled</button>
+  <a mat-raised-button href="https://www.google.com/" target="_blank">Link</a>
+</div>
+<br />
+<br />
+<br />
+<br />
+
+<div class="demo-section">
+  Button with a badge on the left
+  <button mat-raised-button color="primary"
+          matBadge="8" matBadgePosition="before" matBadgeColor="accent">
+    Action
+  </button>
+</div>
+<br />
+<br />
+<br />
+<br />
+<app-child [item]="data1"></app-child>
+<app-child [item]="'Hello'"></app-child>
+<br />
+<button (click)="updateChild()">Update Child Component</button>
+
+
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<ul *ngFor="let user of userDetails">
+  <app-child [items]="user"></app-child>
+</ul>
+
+
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<h2>Send data Child to Parent component</h2>
+<br />
+<br />
+<h4>Data Coming From Child is : <span style="color:brown">{{childData}}</span></h4>
+<app-child1 (updateDataEvent)="updateData($event)"></app-child1>
+<br />
+<br />
+<hr />
+<br />
+<hr />
+<br />
+<input type="text" [(ngModel)]="twoWayBindingValue" />
+<br />
+<br />
+<h4>Two binded data is : <span style="color:brown">{{twoWayBindingValue}}</span></h4>
+
+<br />
+<hr />
+<br />
+<h2>USD to INR converter using pipes</h2>
+<br />
+<input type="number" placeholder="Enter INR to convert into USD" style="width:250px" [(ngModel)]="pipeItem" /> &nbsp; <label>INR</label>
+<br />
+<br />
+<h3>USD : {{pipeItem | usdInr}}</h3>
+<br />
+<hr />
+<br />
+<br />
+<hr />
+<br />
+<br />
+<h3>Reactive form with validations</h3>
+<br />
+<form [formGroup]="loginForm" (ngSubmit)="loginUser()">
+  <input type="text" placeholder="Enter Your email" name="user" formControlName="user" /><br />
+  <span style="color:red;" *ngIf="user && user.invalid && user.touched">This field is invalid !</span><br /><br />
+
+  <input type="password" placeholder="Enter Your Password" name="password" formControlName="password" /><br />
+  <span style="color:red;" *ngIf="password && password.invalid && password.touched">This field is invalid !</span><br /><br /><br />
+  <button [disabled]="loginForm.invalid">Submit</button>
+</form>
+<br />
+<br />
+<hr />
+<br />
+<br />
+<br />
+<br />
+<h2>Custom Directive</h2>
+<h2 appRedEl #directiveEx>Example for Custom Directive</h2>
+
+
+
+
+<br />
+<input placeholder="Enter a Value" [(value)]="dinamicValue"/>
+<button (click)="onClickDV()">click</button>
+

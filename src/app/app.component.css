@@ -1,0 +1,32 @@
+.counter {
+  width: 500px;
+  height: 500px;
+  border-radius: 8%;
+  border: solid red 1px;
+  margin: 10px auto;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.div1 {
+  width: 200px;
+  height: 200px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.h2div {
+    border-bottom:solid red 1px;
+}
+
+body {
+  text-align: center
+}
+
+
+

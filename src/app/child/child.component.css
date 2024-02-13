@@ -1,0 +1,8 @@
+li {
+  display: inline-block;
+  padding: 10px;
+  background-color: skyblue;
+  width: 30%;
+  color: #fff;
+  border-left: 1px solid orange;
+}

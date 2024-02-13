@@ -1,0 +1,26 @@
+nav img{
+    width:90px
+}
+
+nav {
+    background-color:snow;
+    padding:10px;
+}
+
+ul {
+    float:right;
+    list-style-type:none;
+}
+
+  ul li {
+      display:inline-block;
+      padding:30px;
+  }
+
+a {
+  text-decoration: none;
+  color: #000;
+  font-family: 'Young Serif', serif;
+
+  font-size: large;
+}
